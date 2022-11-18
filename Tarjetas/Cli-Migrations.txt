@@ -1,0 +1,5 @@
+PM> dotnet ef dbcontext scaffold Name=ConnectionStrings:SqlConnectionAdmon Microsoft.EntityFrameworkCore.SqlServer --output-dir Models\SysTesoreria\admin > Models\sysTesoreria\admin\Outpu-Log.log
+PM> dotnet ef dbcontext scaffold Name=ConnectionStrings:SqlConnectionContabilidad Microsoft.EntityFrameworkCore.SqlServer --output-dir Models\SysTesoreria\contabilidad > Models\sysTesoreria\contabilidad\Outpu-Log.log
+PM> dotnet ef dbcontext scaffold Name=ConnectionStrings:SqlConnectionRRHH Microsoft.EntityFrameworkCore.SqlServer --output-dir Models\SysTesoreria\rrhh > Models\sysTesoreria\rrhh\Outpu-Log.log
+PM> dotnet ef dbcontext scaffold Name=ConnectionStrings:SqlConnectionTesoreria Microsoft.EntityFrameworkCore.SqlServer --output-dir Models\SysTesoreria\tesoreria > Models\sysTesoreria\tesoreria\Outpu-Log.log
+PM> dotnet ef dbcontext scaffold Name=ConnectionStrings:SqlConnectionVentas Microsoft.EntityFrameworkCore.SqlServer --output-dir Models\SysTesoreria\ventas > Models\sysTesoreria\ventas\Outpu-Log.log

@@ -1,5 +1,4 @@
 using Microsoft.Extensions.FileProviders;
-using Microsoft.OpenApi.Models;
 using Tarjetas;
 
 
@@ -8,7 +7,10 @@ var startup = new Startup(builder.Configuration);
 
 startup.ConfigurationServices(builder.Services);
 
+
 var app = builder.Build();
+
+
 
 app.UseStaticFiles(new StaticFileOptions
 {

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
+
 namespace Tarjetas
 {
     public class Startup
@@ -10,10 +12,12 @@ namespace Tarjetas
         {
             Configuration = configuration;
         }
-        
+
         public IConfiguration Configuration { get; }
+
         public void ConfigurationServices(IServiceCollection services)
         {
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1.2", new OpenApiInfo
@@ -24,22 +28,26 @@ namespace Tarjetas
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles
             );
 
-
             services.AddDbContext<ApplicationDbContext>(
                 options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DeploySysTesoreria"))
             );
             
             services.AddEndpointsApiExplorer();
+            
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             // Configure the HTTP request pipeline.
             if (env.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(c => {
                     c.SwaggerEndpoint("/swagger/v1.2/swagger.json", "Api REST");
+                    c.DefaultModelExpandDepth(2);
+                    //Close all of the major nodes
+                    c.DocExpansion(DocExpansion.None);
                     c.ConfigObject.AdditionalItems.Add("syntaxHighlight", false); //Turns off syntax highlight which causing performance issues...
                     c.ConfigObject.AdditionalItems.Add("theme", "agate");
                 });
@@ -70,6 +78,8 @@ namespace Tarjetas
                 RequestPath = "/public",
                 EnableDirectoryBrowsing = true
             });
+
+            
 
             //app.MapControllers();
 
